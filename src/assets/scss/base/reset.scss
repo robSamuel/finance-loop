@@ -1,0 +1,17 @@
+html,
+body {
+	font-family: "Oswald", "sans-serif";
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #bfbfbf;
+		border-radius: 10px;
+		height: 42px;
+	}
+}
