@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import {
     Collapse,
     Nav,
     NavItem,
-    NavLink,
     Navbar,
     NavbarBrand,
     NavbarToggler,
@@ -32,31 +32,41 @@ const Layout = props => {
     const toggle = () => setIsOpen(prevIsOpen => !prevIsOpen);
 
     const renderNavItems = () => {
-        return NAV_LIST.map(item => {
-            return (
-                <div key={uuidv4()}>
-                    <NavItem>
-                        <NavLink href={`/${item.link}`}>
-                            {item.text}
-                        </NavLink>
-                    </NavItem>
-                </div>
-            );
-        })
+        return NAV_LIST.map(item => (
+            <NavItem className="Header-item" key={uuidv4()}>
+                <Link className="Header-link" to={`/${item.link}`}>
+                    {item.text}
+                </Link>
+            </NavItem>
+        ));
     }
 
     return (
-        <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Finance Loop</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        {renderNavItems()}
-                    </Nav>
-                </Collapse>
-            </Navbar>
-        </div>
+        <header className="Header bg-dark">
+            <div className="container">
+                <Navbar dark light expand="lg">
+                    <NavbarBrand
+                        className="Header-brand"
+                        href="/"
+                    >
+                        Finance Loop
+                    </NavbarBrand>
+                    <NavbarToggler
+                        className="mr-2"
+                        onClick={toggle}
+                    />
+                    <Collapse
+                        className="justify-content-end"
+                        isOpen={isOpen}
+                        navbar
+                    >
+                        <Nav className="mr-auto" navbar>
+                            {renderNavItems()}
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
+        </header>
     );
 };
 

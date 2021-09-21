@@ -3,7 +3,7 @@ import logo from '../../logo.svg';
 
 const Footer = props => {
     return (
-        <footer className="Footer">
+        <footer className="Footer bg-dark">
             <div className="container h-100">
                 <div className="row h-100">
                     <div className="col-12 col-md-6">
