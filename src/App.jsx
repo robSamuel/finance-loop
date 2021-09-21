@@ -1,29 +1,41 @@
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
 import './App.css';
 import './assets/scss/main.scss';
-import { BrowserRouter } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import {Spinner} from 'reactstrap';
 import Layout from './components/Layout';
+import routes from './components/Routes';
 
 const App = () => {
+  const mappedRoutes = routes.map(route => {
+    return route.component && (
+      <Route
+        key={uuidv4()}
+        path={route.path}
+        exact={route.exact}
+        name={route.name}
+        component={route.component}
+      />
+    );
+  });
+
   return (
-    <BrowserRouter>
-      <Layout>
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Finanzaaaaaaaaas I
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </div>
-      </Layout>
-    </BrowserRouter>
+    <Suspense fallback={<Spinner />}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            { mappedRoutes }
+            <Redirect from="/" to="/home" />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 

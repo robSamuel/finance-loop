@@ -9,11 +9,12 @@ import {
     NavbarBrand,
     NavbarToggler,
 } from 'reactstrap';
+import { Gear } from 'react-bootstrap-icons';
 
 const NAV_LIST = [
     {
         text: 'Cátalogo de Cuentas',
-        link: 'accounts-manager'
+        link: 'chart-of-accounts'
     },
     {
         text: 'Estados Financieros',
@@ -45,12 +46,16 @@ const Layout = props => {
         <header className="Header bg-dark">
             <div className="container">
                 <Navbar dark light expand="lg">
-                    <NavbarBrand
-                        className="Header-brand"
-                        href="/"
-                    >
-                        Finance Loop
-                    </NavbarBrand>
+                    <Link to="/home">
+                        <NavbarBrand
+                            className="Header-brand"
+                        >
+                            Finance Loop
+                        </NavbarBrand>
+                    </Link>
+                    <Link to="/settings">
+                        <Gear style={{ color: '#fff' }} />
+                    </Link>
                     <NavbarToggler
                         className="mr-2"
                         onClick={toggle}
