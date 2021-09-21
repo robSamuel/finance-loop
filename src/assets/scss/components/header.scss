@@ -1,0 +1,29 @@
+.Header {
+	display: flex;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9000;
+
+	.navbar-brand {
+		color: $footerLinks;
+	}
+
+	&-item {
+		display: inline-block;
+		text-align: center;
+	}
+
+	&-link {
+		color: $footerLinks;
+		font-size: 1.3rem;
+		font-weight: 600;
+		margin: 0 1rem;
+		text-decoration: none;
+
+		@include OnPointerEvent {
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}

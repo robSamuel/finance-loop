@@ -1,0 +1,18 @@
+.Footer {
+	height: 220px;
+	width: 100%;
+
+	&-column {
+		color: $white;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+
+	&-link {
+		color: $footerLinks;
+
+		@include OnPointerEvent {
+			color: $white;
+		}
+	}
+}
